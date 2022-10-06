@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-10-06T16:11:33Z"
+  generateName: k8s-node-js-56595c78c-
+  labels:
+    app: k8s-node-js
+    pod-template-hash: 56595c78c
+  name: k8s-node-js-56595c78c-r9lmp
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: k8s-node-js-56595c78c
+    uid: 6c4ad127-0242-4de4-aa03-9191c9c883bc
+  resourceVersion: "4807"
+  uid: 92f47dcf-01f3-4b44-8a36-9db97ceddc1c
+spec:
+  containers:
+  - image: sudipdas2001/k8s-node-js
+    imagePullPolicy: Always
+    name: k8s-node-js
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-98hfc
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-98hfc
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-06T16:11:33Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-06T16:15:32Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-06T16:15:32Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-10-06T16:11:33Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://2223d3576d05aebb704d339e0e88c0409f342b78f6a81e2f077038e0acc51d34
+    image: sudipdas2001/k8s-node-js:latest
+    imageID: docker-pullable://sudipdas2001/k8s-node-js@sha256:a1142f79a01728b94c1180c4cb0fbd4bd2b7aeb3d9f63acda4bce582aef7926d
+    lastState: {}
+    name: k8s-node-js
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-10-06T16:15:31Z"
+  hostIP: 192.168.49.2
+  phase: Running
+  podIP: 172.17.0.4
+  podIPs:
+  - ip: 172.17.0.4
+  qosClass: BestEffort
+  startTime: "2022-10-06T16:11:33Z"
